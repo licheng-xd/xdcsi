@@ -2,4 +2,4 @@
 
 首页：[http://www.xdcsi.com][1]
 
-[1]:    http://www.xdcsi.net
+[1]:    http://www.xdcsi.com
