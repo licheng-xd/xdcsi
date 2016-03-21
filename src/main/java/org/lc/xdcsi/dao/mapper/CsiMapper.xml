@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lc.xdcsi.dao.CsiMapper">
+    <resultMap id="vcardMap" type="org.lc.xdcsi.dao.domain.CsiVcard"/>
+
+    <insert id="insertVcard" parameterType="org.lc.xdcsi.dao.domain.CsiVcard">
+        <![CDATA[
+        insert into csi_vcard(name, mobile, city, company, pos, graduation, createtime)
+        values (#{name}, #{mobile}, #{city}, #{company}, #{pos}, #{graduation}, #{createtime});
+        ]]>
+    </insert>
+
+    <select id="getVcard" parameterType="java.lang.String" resultType="org.lc.xdcsi.dao.domain.CsiVcard">
+        <![CDATA[
+        select * from csi_vcard where name=#{name};
+        ]]>
+    </select>
+
+    <select id="getVcardAll" resultMap="vcardMap">
+        <![CDATA[
+        select * from csi_vcard order by graduation;
+        ]]>
+    </select>
+
+    <delete id="removeVcard" parameterType="java.lang.String">
+        <![CDATA[
+        delete from csi_vcard where name=#{name};
+        ]]>
+    </delete>
+
+    <select id="searchVcard" parameterType="java.lang.String" resultMap="vcardMap">
+        <![CDATA[
+        select * from csi_vcard where name like #{key};
+        ]]>
+    </select>
+</mapper>
